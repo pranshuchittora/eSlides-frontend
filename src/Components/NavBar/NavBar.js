@@ -10,7 +10,9 @@ const styles = {
     flexGrow: 1
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
+    textAlign: "center",
+    
   }
 };
 
@@ -20,7 +22,11 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography
+            variant="h4"
+            color="inherit"
+            className={classes.grow}
+          >
             eSlides
           </Typography>
         </Toolbar>

@@ -6,9 +6,32 @@ import {
   CardContent,
   Button,
   Grid,
-  Divider
+  Divider,Paper
 } from "@material-ui/core";
-import { func } from "prop-types";
+import { reqURL } from "../../util/reqURL";
+
+const departments = [
+  {
+    label: "Computer Science & Engineering",
+    value: "cse"
+  },
+  {
+    label: "Electrical & Electronics Engineering",
+    value: "eee"
+  },
+  {
+    label: "Electronics & Communication Engineering",
+    value: "ece"
+  },
+  {
+    label: "Mechanical Engineering",
+    value: "me"
+  },
+  {
+    label: "Civil Engineering",
+    value: "ce"
+  }
+];
 
 const course = {
   cse: [
@@ -65,7 +88,7 @@ class CourseForm extends React.Component {
   OpenSlide = () => {
     if (this.dataValidation()) {
       const URL =
-        "http://localhost:5000/slides/" +
+        reqURL +
         this.state.department +
         "/" +
         this.state.course +
@@ -75,7 +98,7 @@ class CourseForm extends React.Component {
   };
   OpenSlidePDF = () => {
     const URL =
-      "http://localhost:5000/slides/" +
+      reqURL +
       this.state.department +
       "/" +
       this.state.course +
@@ -84,7 +107,7 @@ class CourseForm extends React.Component {
   };
   OpenSlidePDFDownload = () => {
     const URL =
-      "http://localhost:5000/slides/" +
+      reqURL +
       this.state.department +
       "/" +
       this.state.course +
@@ -97,71 +120,68 @@ class CourseForm extends React.Component {
         <CardContent>
           <Grid container justify="center" spacing={24}>
             <Grid item xs={12}>
-              <Grid container justify="center" spacing={24}>
-                <Grid item xs={12} sm={6} md={3} lg={2}>
-                  <TextField
-                    fullWidth
-                    id="standard-select-currency"
-                    select
-                    label="Select"
-                    value={this.state.department}
-                    onChange={e => this.handleChangeDepartment(e)}
-                    SelectProps={{
-                      MenuProps: {}
-                    }}
-                    helperText="Select department"
-                    margin="normal"
-                  >
-                    {Object.keys(course).map(option => {
-                      return (
-                        <MenuItem key={option} value={option}>
-                          {option.toUpperCase()}
-                        </MenuItem>
-                      );
-                    })}
-                  </TextField>
-                </Grid>
-
-                {/* COurse */}
-                <Grid item xs={12} sm={6} md={3} lg={2}>
-                  <TextField
-                    fullWidth
-                    id="standard-select-currency"
-                    select
-                    label="Select"
-                    value={this.state.course}
-                    onChange={e => this.handleChangeCourse(e)}
-                    SelectProps={{
-                      MenuProps: {}
-                    }}
-                    helperText="Select Course"
-                    margin="normal"
-                  >
-                    {this.state.department
-                      ? course[this.state.department].map(option => (
-                          <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                          </MenuItem>
-                        ))
-                      : null}
-                  </TextField>
-                </Grid>
-              </Grid>
+              <TextField
+                fullWidth
+                id="standard-select-currency"
+                select
+                label="Select"
+                value={this.state.department}
+                onChange={e => this.handleChangeDepartment(e)}
+                SelectProps={{
+                  MenuProps: {}
+                }}
+                helperText="Select department"
+                margin="normal"
+              >
+                {departments.map(option => {
+                  return (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label.toUpperCase()}
+                    </MenuItem>
+                  );
+                })}
+              </TextField>
             </Grid>
+
+            {/* COurse */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                id="standard-select-currency"
+                select
+                label="Select"
+                value={this.state.course}
+                onChange={e => this.handleChangeCourse(e)}
+                SelectProps={{
+                  MenuProps: {}
+                }}
+                helperText="Select Course"
+                margin="normal"
+              >
+                {this.state.department
+                  ? course[this.state.department].map(option => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))
+                  : null}
+              </TextField>
+            </Grid>
+
             <Divider />
             <Grid item xs={12}>
               <Grid container justify="center" spacing={24}>
-                <Grid item>
+                <Grid item xs={6}>
                   <Button
                     fullWidth
                     variant="contained"
                     color="primary"
                     onClick={() => this.OpenSlide()}
                   >
-                    View
+                    View Online
                   </Button>
                 </Grid>
-                <Grid item>
+                <Grid item xs={6}>
                   <Button
                     fullWidth
                     variant="contained"
@@ -171,11 +191,11 @@ class CourseForm extends React.Component {
                     View as PDF
                   </Button>
                 </Grid>
-                <Grid item>
+                <Grid item xs={6}>
                   <Button
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     onClick={() => this.OpenSlidePDFDownload()}
                   >
                     Download as PDF
