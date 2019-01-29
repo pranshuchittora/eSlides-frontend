@@ -6,55 +6,11 @@ import {
   CardContent,
   Button,
   Grid,
-  Divider,Paper
+  Divider,
+  Paper
 } from "@material-ui/core";
 import { reqURL } from "../../util/reqURL";
-
-const departments = [
-  {
-    label: "Computer Science & Engineering",
-    value: "cse"
-  },
-  {
-    label: "Electrical & Electronics Engineering",
-    value: "eee"
-  },
-  {
-    label: "Electronics & Communication Engineering",
-    value: "ece"
-  },
-  {
-    label: "Mechanical Engineering",
-    value: "me"
-  },
-  {
-    label: "Civil Engineering",
-    value: "ce"
-  }
-];
-
-const course = {
-  cse: [
-    {
-      label: "15SE205J - JAVA",
-      value: "java"
-    },
-    {
-      label: "15CS205J - ADA",
-      value: "ada"
-    }
-  ],
-  ece: [
-    {
-      label: "15EC205J Signals",
-      value: "Signals"
-    },
-    {
-      label: "15EC205J POC",
-      value: "POC"
-    }
-  ]
-};
+import { departments, courses } from "../../static/arrays";
 
 class CourseForm extends React.Component {
   state = {
@@ -124,13 +80,12 @@ class CourseForm extends React.Component {
                 fullWidth
                 id="standard-select-currency"
                 select
-                label="Select"
+                label="Department"
                 value={this.state.department}
                 onChange={e => this.handleChangeDepartment(e)}
                 SelectProps={{
                   MenuProps: {}
                 }}
-                helperText="Select department"
                 margin="normal"
               >
                 {departments.map(option => {
@@ -149,17 +104,16 @@ class CourseForm extends React.Component {
                 fullWidth
                 id="standard-select-currency"
                 select
-                label="Select"
+                label="Course"
                 value={this.state.course}
                 onChange={e => this.handleChangeCourse(e)}
                 SelectProps={{
                   MenuProps: {}
                 }}
-                helperText="Select Course"
                 margin="normal"
               >
                 {this.state.department
-                  ? course[this.state.department].map(option => (
+                  ? courses[this.state.department].map(option => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
                       </MenuItem>
