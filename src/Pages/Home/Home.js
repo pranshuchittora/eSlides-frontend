@@ -4,16 +4,23 @@ import { Grid } from "@material-ui/core";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CourseFrom from "../../Components/CourseForm/CourseForm";
 import localStyles from "./Home.css";
-import { teal, blue, indigo, green } from "@material-ui/core/colors";
+import {
+  teal,
+  blue,
+  indigo,
+  green,
+  yellow,
+  grey
+} from "@material-ui/core/colors";
 
 const ThemeForm = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      main: teal[700]
+      main: grey[900]
     },
     secondary: {
-      main: blue[700]
+      main: indigo[700]
     }
   }
 });

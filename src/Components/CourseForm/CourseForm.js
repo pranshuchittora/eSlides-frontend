@@ -11,7 +11,9 @@ import {
 } from "@material-ui/core";
 import { reqURL } from "../../util/reqURL";
 import { departments, courses } from "../../static/arrays";
+import Logo from "../../Assets/icon/icon.png";
 
+import localStyles from './CourseForm.css'
 class CourseForm extends React.Component {
   state = {
     department: "",
@@ -75,6 +77,7 @@ class CourseForm extends React.Component {
       <Card>
         <CardContent>
           <Grid container justify="center" spacing={24}>
+            <img className={localStyles.logo} src={Logo} />
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -125,7 +128,7 @@ class CourseForm extends React.Component {
             <Divider />
             <Grid item xs={12}>
               <Grid container justify="center" spacing={24}>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <Button
                     fullWidth
                     variant="contained"
@@ -135,7 +138,7 @@ class CourseForm extends React.Component {
                     View Online
                   </Button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <Button
                     fullWidth
                     variant="contained"
@@ -145,7 +148,7 @@ class CourseForm extends React.Component {
                     View as PDF
                   </Button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <Button
                     fullWidth
                     variant="contained"

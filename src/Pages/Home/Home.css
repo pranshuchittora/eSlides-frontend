@@ -1,15 +1,14 @@
-.contRoot{
-    min-height: 100vh;
+.contRoot {
+  /* min-height: 100vh; */
 }
-.gridRoot{
-    height: 100%;
+.gridRoot {
+  /* height: 100%; */
 }
 .formCont {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
-  margin-top: 30vh;
-  transform: translate(-50%, -50%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  transform: translate(-50%, -45%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
