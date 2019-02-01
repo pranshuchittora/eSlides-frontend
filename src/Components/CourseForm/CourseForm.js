@@ -13,7 +13,7 @@ import { reqURL } from "../../util/reqURL";
 import { departments, courses } from "../../static/arrays";
 import Logo from "../../Assets/icon/icon.png";
 
-import localStyles from './CourseForm.css'
+import localStyles from "./CourseForm.css";
 class CourseForm extends React.Component {
   state = {
     department: "",
@@ -46,30 +46,24 @@ class CourseForm extends React.Component {
   OpenSlide = () => {
     if (this.dataValidation()) {
       const URL =
-        reqURL +
-        this.state.department +
-        "/" +
-        this.state.course +
-        "/index.html";
+        reqURL + this.state.course + "/Render/COMPLETE/ALL/" + "index.html";
       window.open(URL, "_blank");
     }
   };
   OpenSlidePDF = () => {
     const URL =
       reqURL +
-      this.state.department +
-      "/" +
       this.state.course +
-      "/index.html?print-pdf";
+      "/Render/COMPLETE/ALL/" +
+      "index.html?print-pdf";
     window.open(URL, "_blank");
   };
   OpenSlidePDFDownload = () => {
     const URL =
       reqURL +
-      this.state.department +
-      "/" +
       this.state.course +
-      "/index.html?print-pdf?pdf-download";
+      "/Render/COMPLETE/ALL/" +
+      "index.html?print-pdf?pdf-download";
     window.open(URL, "_blank");
   };
   render() {

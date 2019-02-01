@@ -25,7 +25,7 @@ export const courses = {
   cse: [
     {
       label: "15SE205J - JAVA",
-      value: "java"
+      value: "15CS204J"
     },
     {
       label: "15CS205J - ADA",

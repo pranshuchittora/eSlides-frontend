@@ -1,1 +1,1 @@
-export const reqURL = "http://localhost:5000/slides/";
+export const reqURL = "http://192.168.43.191:5000/courses/";
